@@ -125,3 +125,14 @@ func (a *APP) RestartApp() {
 func (a *APP) GetCore() *core.Core {
 	return a.core
 }
+
+type App struct {
+    // سایر سرویس‌ها
+    updaterService *service.UpdaterService
+}
+
+func NewApp() *App {
+    app := &App{}
+    app.updaterService = service.NewUpdaterService(&app.clientService)
+    return app
+}
